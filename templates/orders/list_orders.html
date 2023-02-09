@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de ordenes
+{% endblock %}
+
+{% block content %}
+
+<h1>listado de ordenes</h1>
+    {% for order in orders %}
+    <div class="card" style="width: 18rem;">
+        <img src="https://f4.bcbits.com/img/a2894263127_16.jpg"
+        class="card-img-top" alt="...">
+        <div class="card-body">
+        <h5 class="card-title">EL cliente: {{order.client}}</h5>
+        <p class="card-text">Compro el producto{{order.product}} el {{order.creation_time}}</p>
+        <p>El pago se realizo con {{order.payment_method}}</p>
+        <a href="#" class="btn btn-primary"></a>
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de productos
+{% endblock %}
+
+{% block content %}
+    <h1></h1>
+    {% if request.user.is_authenticated %}
+        {% if request.user.is_superuser %}
+            <h2>Crear nuevo producto</h2> <a href="/products/create-product/" class="btn btn-primary">Crear</a>
+        {% endif %}
+    {% endif %}
+    {% for product in products %}
+    {% load static %}
+                <div class="card-colums">
+            <div class="card" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="" />
+                <div class="card-body">
+                <h5 class="card-title">{{product.name}}</h5>
+                <p class="card-text">Su precio es ${{product.price}}</p>
+                </div>
+            </div>
+                {% if product.stock == True %}
+                    <p>Actualmente hay stock</p>
+                {% else %}
+                    <p>Actualmente, nos quedamos sin stock</p>
+                {% endif %}
+                <!-- <a href="#" class="btn btn-primary">Comprar</a> -->
+                </div>
+            </div>
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listado de proveedores
+{% endblock %}
+
+{% block content %}
+    <h1>listado de proveedores</h1>
+    <h2>Crear nuevo prestador</h2> <a href="/providers/provider-create/" class="btn btn-primary">Crear</a>
+
+    {% for provider in object_list %}
+
+            <div class="card" style="width: 18rem;">
+                <img src="https://cdn.shopify.com/s/files/1/1901/3073/t/14/assets/fat_logo.svg?v=16480820497454917561669944272" class="card-img-top" alt="...">
+                <div class="card-body">
+                <h5 class="card-title">{{provider.name}}</h5>
+                <p class="card-text">Direccion: {{provider.address}}</p>
+                <p>Telefono: {{provider.phone_number}}</p>
+                <a href="/providers/provider-update/{{provider.pk}}/" class="btn btn-primary">Actualizar</a>
+                <a href="/providers/provider-delete/{{provider.pk}}/" class="btn btn-danger">Borrar</a>
+                </div>
+            </div>
+
+    {% endfor %}
+{% endblock %}
